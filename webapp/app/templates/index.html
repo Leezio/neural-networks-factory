@@ -1,67 +1,57 @@
-<!DOCTYPE html>
-<!--
+{% load static %}
+<!doctype html>
+<html lang="en" ng-app="app">
 
-               __-----_                         ____________
-              /  \      \           o  O  O ___(            )____
-             /    |  |   \_---_   o _     _(                     )_
-            |     |            \   | |---(_      Ohhh, it's       _)
-            |     |             |@ | |     (_    private ...     _)
-             \___/   ___       /   | |      (__              ___)
-               \____(____\___/     | |         (_____________)
-               |__|                | |           |
-               /   \-_             | |          _|
-             /      \_ -__ _       |_|_ __ ____/
-            /         -|  |_)       ___\__/_
-           |          _|  |) ____  |    ... | 
-           _\_____________|_|____|_|________|_ 
-          /                                   \
-         /_____________________________________\
-        /                                       \
-       /_________________________________________\
-      /                                           \
-     /_____________________________________________\
-            |                               |
-            |_______________________________|
-            |                               |
-  \|/       |_______________________________|
-            |                               | 	     \|/ 
-            |_______________________________|   \|/
-      \|/                                                  	
-                      \|/
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link type="image/x-icon" rel="icon" href="/favicon.ico">
+  <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
+  <!-- Styles -->
+  <!-- Bootstrap 4 -->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" />
+  <!-- Tachyons 4 -->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
+  <!-- Bootstrap 4 -->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.6.1/rzslider.min.css" />
+  <!-- Dashboard local style -->
+  <link type="text/css" rel="stylesheet" href="{% static "style.css" %}">
+  <!-- End Styles -->
+  <title>Neural Network Factory</title>
+</head>
 
--->
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link type="image/x-icon" rel="icon" href="/favicon.ico">
-        <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
-        <!-- Styles -->
-        <!-- Bootstrap 4 -->
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
-        <!-- End Styles -->
-        <title>Leezio / Workspace</title>
-    </head>
-    <body>
-        <!-- Content -->
-        <section class="container text-sm-center">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p class="lead">{{ hello }}</p>
-                </div>
-            </div>
-        </section>
-        <!-- End Content -->
-        <!-- Footer -->
-        <!-- End Footer -->
-        <!-- Scripts -->
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- Proper -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.8/umd/popper.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-        <!-- End Scripts -->
-    </body>
+<body ng-controller="MainCtrl as vm">
+  <div class="center tc mb4">
+    <p class="f3 fw1 pb1 tracked-tight"> </p>
+    <div class="slider-container">
+      <div class="">Input Layer Height</div>
+      <rzslider id="input-height-step-slider" rz-slider-model="vm.inputLayerHeightSlider.value" rz-slider-options="vm.inputLayerHeightSlider.options"></rzslider>
+      <div class="">Hidden Layer Count</div>
+      <rzslider id="hidden-count-step-slider" rz-slider-model="vm.hiddenLayerCountSlider.value" rz-slider-options="vm.hiddenLayerCountSlider.options"></rzslider>
+      <div class="">Output Layer Height</div>
+      <rzslider id="output-height-step-slider" rz-slider-model="vm.outputLayerHeightSlider.value" rz-slider-options="vm.outputLayerHeightSlider.options"></rzslider>
+    </div>
+    <div class="" id="neuralNet"></div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Angualar 1.7 -->
+  <script type="text/javascript" data-semver="1.7.7" data-require="angular.js@1.7.x" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+  <!-- jQuery 3 -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.6.1/rzslider.min.js"></script>
+  <!-- D3 3 -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <!-- jQuery 3 -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Proper 1 -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <!-- Dashboard local script -->
+  <script type="text/javascript" src="{% static "./main.js" %}"></script>
+  <!-- End Scripts -->
+</body>
+
+
+
 </html>
