@@ -5,8 +5,8 @@ app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
 
     vm.inputLayerHeight = 15;
     vm.hiddenLayersCount = 2;
-    vm.hiddenLayersDepths = [10, 10, 10, 10, 10];
-    vm.outputLayerHeight = 5;
+    vm.hiddenLayersHeight = 15;
+    vm.outputLayerHeight = 1;
 
     var networkGraph = {
         "nodes": []
@@ -16,7 +16,7 @@ app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
     var height = 400,
         nodeSize = 15;
 
-    var color = d3.scale.category20(); 
+    var color = d3.scale.category20();
 
     angular.element($window).on('resize', function () {
         console.log($window.innerWidth);
@@ -32,7 +32,6 @@ app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
             showTicks: true,
             id: 'input-height-step-slider',
             onChange: function (id) {
-                console.log('on end ' + id); // logs 'on end slider-id'
                 vm.inputLayerHeight = vm.inputLayerHeightSlider.value;
                 draw();
             }
@@ -47,31 +46,44 @@ app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
             showTicks: true,
             id: 'hidden-count-step-slider',
             onChange: function (id) {
-                console.log('on end ' + id); // logs 'on end slider-id'
                 vm.hiddenLayersCount = vm.hiddenLayerCountSlider.value;
                 draw();
             }
         }
     };
 
-    vm.outputLayerHeightSlider = {
-        value: 5,
+    vm.hiddenLayersHeightSlider = {
+        value: 15,
         options: {
-            floor: 2,
+            floor: 5,
+            ceil: 20,
+            showTicks: true,
+            id: 'hidden-height-step-slider',
+            onChange: function (id) {
+                vm.hiddenLayersHeight = vm.hiddenLayersHeightSlider.value;
+                draw();
+            }
+        }
+    };
+
+    vm.outputLayerHeightSlider = {
+        value: 1,
+        options: {
+            floor: 1,
             ceil: 10,
             showTicks: true,
             id: 'output-height-step-slider',
             onChange: function (id) {
-                console.log('on end ' + id); // logs 'on end slider-id'
                 vm.outputLayerHeight = vm.outputLayerHeightSlider.value;
                 draw();
             }
         }
     };
 
-    $scope.$watchGroup(['vm.inputLayerHeight', 'vm.hiddenLayersCount', 'vm.outputLayerHeight'], function (newVal, oldVal) {
+    $scope.$watchGroup(['vm.inputLayerHeight', 'vm.hiddenLayersCount', 'vm.hiddenLayersHeight', 'vm.outputLayerHeight'], function (newVal, oldVal) {
         //vm.inputLayerHeight = ;
         //vm.hiddenLayersCount = ;
+        //vm.hiddenLayersHeight = ;
         //vm.outputLayerHeight = ;
     });
 
@@ -94,7 +106,7 @@ app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
         for (var hiddenLayerLoop = 0; hiddenLayerLoop < vm.hiddenLayersCount; hiddenLayerLoop++) {
             var newHiddenLayer = [];
             //for the height of this hidden layer
-            for (var i = 0; i < vm.hiddenLayersDepths[hiddenLayerLoop]; i++) {
+            for (var i = 0; i < vm.hiddenLayersHeight; i++) {
                 var newTempLayer = { "label": "h" + hiddenLayerLoop + i, "layer": (hiddenLayerLoop + 2) };
                 newHiddenLayer.push(newTempLayer);
             }
