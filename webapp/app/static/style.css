@@ -1,49 +1,57 @@
-text {
-      pointer-events: none;
-    }
+body {
+  background-color: #f7f7f7;
+}
 
-    .node:hover {
-      stroke: #999;
-      stroke-opacity: .6;
-      stroke-width: 4px;
-    }
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+  stroke-dasharray: 5;
+}
 
-    .link {
-      stroke: #999;
-      stroke-opacity: .6;
-    }
+.custom-slider.rzslider .rz-bar {
+  background: #999;
+  height: 2px;
+}
+.custom-slider.rzslider .rz-selection {
+  background: #999;
+}
 
-    .slider-container {
-      width: 50vw;
-      min-width: 400px;
-      margin: auto;
-    }
+.custom-slider.rzslider .rz-pointer {
+  width: 8px;
+  height: 16px;
+  top: auto; /* to remove the default positioning */
+  bottom: 0;
+  background-color: #333;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
 
-    .button:focus {
-      outline: 0;
-    }
+.custom-slider.rzslider .rz-pointer:after {
+  display: none;
+}
 
-    .rz-pointer:focus {
-      outline: 0;
-    }
+.custom-slider.rzslider .rz-bubble {
+  bottom: 14px;
+  color: #5a5a5a;
+}
 
-    .rz-active:after {
-      background-color: #BEB6AF !important;
-    }
+.custom-slider.rzslider .rz-limit {
+  color: #5a5a5a;
+}
 
-    .rzslider .rz-bar {
-      background: #d8e0f3;
-    }
+.custom-slider.rzslider .rz-tick {
+  width: 1px;
+  height: 10px;
+  margin-left: 4px;
+  border-radius: 0;
+  background: #999;
+  top: -1px;
+}
 
-    .rzslider .rz-tick {
-      background: #d8e0f3;
-    }
+.custom-slider.rzslider .rz-tick.rz-selected {
+  background: #999;
+}
 
-    .rzslider .rz-tick {
-      top: -2.5px !important;
-      left: -2.5px !important;
-      width: 15px !important;
-      height: 15px !important;
-    }
-
-    
+.settings-title {
+  color: #626e78;
+}

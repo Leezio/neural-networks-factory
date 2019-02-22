@@ -1,7 +1,16 @@
 var app = angular.module('app', ['rzModule']);
 
-app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
+app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     var vm = this;
+
+    $scope.myFunc = function () {
+        $http.get("http://localhost:8000/")
+            .then(function (response) {
+                console.log(vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
+            });
+    };
+
+
 
     vm.inputLayerHeight = 15;
     vm.hiddenLayersCount = 2;
@@ -211,7 +220,6 @@ app.controller('MainCtrl', function ($scope, $interval, $window, $q) {
             .attr("width", width)
             .attr("height", height);
 
-        console.log("drawing   " + new Date());
         networkGraph = buildNodeGraph();
         //buildNodeGraph();
         drawGraph(networkGraph, svg);
