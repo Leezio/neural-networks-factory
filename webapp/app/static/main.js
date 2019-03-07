@@ -3,14 +3,26 @@ var app = angular.module('app', ['rzModule']);
 app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     var vm = this;
 
-    $scope.myFunc = function () {
+    $scope.play = function () {
         $http.get("http://localhost:8000/")
             .then(function (response) {
-                console.log(vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
+                console.log("Play: " + vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
             });
     };
 
+    $scope.stop = function () {
+        $http.get("http://localhost:8000/")
+            .then(function (response) {
+                console.log("Stop: " + vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
+            });
+    };
 
+    $scope.reset = function () {
+        $http.get("http://localhost:8000/")
+            .then(function (response) {
+                console.log("Reset: " + vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
+            });
+    };
 
     vm.inputLayerHeight = 15;
     vm.hiddenLayersCount = 2;
@@ -28,7 +40,6 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     var color = d3.scale.category20();
 
     angular.element($window).on('resize', function () {
-        console.log($window.innerWidth);
         width = $window.innerWidth;
         draw();
     });

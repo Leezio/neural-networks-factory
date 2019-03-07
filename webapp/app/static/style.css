@@ -8,6 +8,10 @@ body {
   stroke-dasharray: 5;
 }
 
+.node {
+  
+}
+
 .custom-slider.rzslider .rz-bar {
   background: #999;
   height: 2px;
