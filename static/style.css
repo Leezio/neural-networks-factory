@@ -1,0 +1,52 @@
+body { background-color: #f7f7f7; }
+
+/** Neural Network **/
+.link { stroke: #999; stroke-opacity: .6; stroke-dasharray: 10; stroke-dashoffset: 100; animation: dash 2s linear infinite; }
+
+@keyframes dash { 0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; } }
+
+.node { fill: #ff7f0e !important; }
+
+.custom-slider.rzslider .rz-bar { background: #999; height: 2px; }
+
+.custom-slider.rzslider .rz-selection { background: #999; }
+
+.custom-slider.rzslider .rz-pointer { width: 8px; height: 16px; top: auto; /* to remove the default positioning */ bottom: 0; background-color: #333; border-top-left-radius: 3px; border-top-right-radius: 3px; }
+
+.custom-slider.rzslider .rz-pointer:after { display: none; }
+
+.custom-slider.rzslider .rz-bubble { bottom: 14px; color: #5a5a5a; }
+
+.custom-slider.rzslider .rz-limit { color: #5a5a5a; }
+
+.custom-slider.rzslider .rz-tick { width: 1px; height: 10px; margin-left: 4px; border-radius: 0; background: #999; top: -1px; }
+
+.custom-slider.rzslider .rz-tick.rz-selected { background: #999; }
+
+.settings-title { color: #626e78; }
+
+/** Spinner **/
+.spinner { width: 64px; height: 64px; background: #eee; border-radius: 50%; position: relative; display: inline-block; }
+
+.spinner:after, .spinner:before { content: ''; display: block; width: 64px; height: 64px; border-radius: 50%; }
+
+.spinner-4:before, .spinner-4:after { position: absolute; top: 50%; left: 50%; margin-top: -32px; margin-left: -32px; background: black; -webkit-animation: pulse 3s linear infinite; animation: pulse 3s linear infinite; opacity: 0; }
+
+.spinner-4:after { -webkit-animation: pulse 2s linear 2.3s infinite; animation: pulse 2s linear 2.3s infinite; }
+
+@-webkit-keyframes pulse { 0% { -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1; }
+  100% { -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+    opacity: 0; } }
+
+@keyframes pulse { 0% { -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1; }
+  100% { -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+    opacity: 0; } }
+
+/*# sourceMappingURL=style.css.map */

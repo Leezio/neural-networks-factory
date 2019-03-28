@@ -3,10 +3,18 @@ var app = angular.module('app', ['rzModule']);
 app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     var vm = this;
 
+    $scope.PlayIsVisible = true;
+    $scope.SpinnerIsVisible = false;
+
     $scope.play = function () {
-        $http.get("http://localhost:8000/")
+        $scope.PlayIsVisible = false;
+        $scope.SpinnerIsVisible = true;
+        $http.get("http://localhost:8000/neuralNetwork")
             .then(function (response) {
+                console.log(response);
                 console.log("Play: " + vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
+                $scope.PlayIsVisible = true;
+                $scope.SpinnerIsVisible = false;
             });
     };
 
