@@ -4,5 +4,5 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('neuralNetwork', neuralNetwork, name='neuralNetwork'),
+    path('predict/<str:sentence>', neuralNetwork, name='neuralNetwork'),
 ]

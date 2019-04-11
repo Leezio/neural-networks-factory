@@ -10,11 +10,13 @@
   <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
   <!-- Styles -->
   <!-- Bootstrap 4 -->
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" />
   <!-- Font Awesome-->
   <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
   <!-- AngularJS slider -->
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.6.1/rzslider.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.6.1/rzslider.min.css" />
   <!-- Dashboard local style -->
   <link type="text/css" rel="stylesheet" href="{% sass_src 'style.scss' %}" …>
   <!-- End Styles -->
@@ -30,13 +32,17 @@
     </div>
   </div>
   </div>
-  <div class="container mt-5">
+  <div class="container-fluid mt-3">
     <div class="row">
-      <div class="col-sm-12 d-flex justify-content-center align-items-center">
+      <div class="col-sm-4 d-flex justify-content-center align-items-center">
         <i ng-click="reset()" class="far fa-dot-circle fa-2x mr-2"></i>
         <i ng-click="play()" ng-show="PlayIsVisible" class="far fa-play-circle fa-4x"></i>
         <div ng-show="SpinnerIsVisible" ng-style="SpinnerIsActive" class="spinner spinner-4"></div>
         <i ng-click="stop()" class="far fa-stop-circle fa-2x ml-2"></i>
+      </div>
+      <div class="col-sm-6">
+        <h5 for="predictionTextarea" class="text-uppercase">Sentence</h5>
+        <textarea class="form-control" ng-model="predictionTextarea"></textarea>
       </div>
     </div>
   </div>
@@ -50,10 +56,10 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-sm-8">
-          <h5 class="text-uppercase">Settings</h5>
+        <h5 class="text-uppercase">Settings</h5>
       </div>
       <div class="col-sm-4">
-          <h5 class="text-uppercase">Output</h5>
+        <h5 for="resultTextarea" class="text-uppercase">Output</h5>
       </div>
     </div>
     <div class="row">
@@ -67,30 +73,37 @@
       </div>
       <div class="col-sm-4">
         <p class="settings-title">Hidden Layer Height</p>
-        <rzslider class="custom-slider" id="hidden-height-step-slider" rz-slider-model="vm.hiddenLayersHeightSlider.value"
-          rz-slider-options="vm.hiddenLayersHeightSlider.options"></rzslider>
+        <rzslider class="custom-slider" id="hidden-height-step-slider"
+          rz-slider-model="vm.hiddenLayersHeightSlider.value" rz-slider-options="vm.hiddenLayersHeightSlider.options">
+        </rzslider>
         <p class="settings-title">Output Layer Height</p>
-        <rzslider class="custom-slider" id="output-height-step-slider" rz-slider-model="vm.outputLayerHeightSlider.value"
-          rz-slider-options="vm.outputLayerHeightSlider.options"></rzslider>
+        <rzslider class="custom-slider" id="output-height-step-slider"
+          rz-slider-model="vm.outputLayerHeightSlider.value" rz-slider-options="vm.outputLayerHeightSlider.options">
+        </rzslider>
       </div>
       <div class="col-sm-4">
+        <textarea class="form-control" ng-model="resultTextarea"></textarea>
       </div>
     </div>
   </div>
 
   <!-- Scripts -->
   <!-- Angualar 1.7 -->
-  <script type="text/javascript" data-semver="1.7.7" data-require="angular.js@1.7.x" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+  <script type="text/javascript" data-semver="1.7.7" data-require="angular.js@1.7.x"
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
   <!-- AngularJS slider -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.6.1/rzslider.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/6.6.1/rzslider.min.js"></script>
   <!-- D3 3 -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
   <!-- jQuery 3 -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Proper 1 -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <!-- Dashboard local script -->
   <script type="text/javascript" src="{% static "./main.js" %}"></script>
   <!-- End Scripts -->

@@ -9,12 +9,16 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     $scope.play = function () {
         $scope.PlayIsVisible = false;
         $scope.SpinnerIsVisible = true;
-        $http.get("http://localhost:8000/neuralNetwork")
+        $http.get("http://localhost:8000/predict/" + $scope.predictionTextarea)
             .then(function (response) {
                 console.log(response);
                 console.log("Play: " + vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
                 $scope.PlayIsVisible = true;
                 $scope.SpinnerIsVisible = false;
+                $scope.resultTextarea = response.data.Result.Prediction;
+            }).catch(function (data) {
+                $scope.PlayIsVisible = false;
+                $scope.SpinnerIsVisible = true;
             });
     };
 

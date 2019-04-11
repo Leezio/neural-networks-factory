@@ -13,7 +13,7 @@ def index(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render({}, request))
 
-def neuralNetwork(request):
+def neuralNetwork(request, sentence):
     imdb = keras.datasets.imdb
     (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
 
@@ -21,7 +21,6 @@ def neuralNetwork(request):
     
     word_index = imdb.get_word_index()
     test=[]
-    sentence = "i dislike this movie yuyyuyuyuyu"
     for word in keras.preprocessing.text.text_to_word_sequence(sentence, filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', lower=True, split=' '):
         if word in word_index:
             test.append(word_index[word])
