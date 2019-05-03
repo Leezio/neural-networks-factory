@@ -1,5 +1,3 @@
-body { background-color: #f7f7f7; }
-
 /** Neural Network **/
 .link { stroke: #999; stroke-opacity: .6; stroke-dasharray: 10; stroke-dashoffset: 100; animation: dash 2s linear infinite; }
 

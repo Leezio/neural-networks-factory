@@ -31,58 +31,47 @@
       </a>
     </div>
   </div>
-  </div>
-  <div class="container-fluid mt-3">
+  <div class="container-fluid pt-2">
     <div class="row">
-      <div class="col-sm-4 d-flex justify-content-center align-items-center">
-        <i ng-click="reset()" class="far fa-dot-circle fa-2x mr-2"></i>
-        <i ng-click="play()" ng-show="PlayIsVisible" class="far fa-play-circle fa-4x"></i>
-        <div ng-show="SpinnerIsVisible" ng-style="SpinnerIsActive" class="spinner spinner-4"></div>
-        <i ng-click="stop()" class="far fa-stop-circle fa-2x ml-2"></i>
-      </div>
-      <div class="col-sm-6">
-        <h5 for="predictionTextarea" class="text-uppercase">Sentence</h5>
-        <textarea class="form-control" ng-model="predictionTextarea"></textarea>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid mt-5">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="neuralNet"></div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-sm-8">
+      <div class="col-3">
+        <h5 for="categorySelection" class="text-uppercase">Category</h5>
+        <select class="custom-select">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <hr>
         <h5 class="text-uppercase">Settings</h5>
-      </div>
-      <div class="col-sm-4">
-        <h5 for="resultTextarea" class="text-uppercase">Output</h5>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
         <p class="settings-title">Input Layer Height</p>
-        <rzslider class="custom-slider" id="input-height-step-slider" rz-slider-model="vm.inputLayerHeightSlider.value"
-          rz-slider-options="vm.inputLayerHeightSlider.options"></rzslider>
+        <rzslider class="custom-slider mt-4" id="input-height-step-slider"
+          rz-slider-model="vm.inputLayerHeightSlider.value" rz-slider-options="vm.inputLayerHeightSlider.options">
+        </rzslider>
         <p class="settings-title">Hidden Layer Count</p>
-        <rzslider class="custom-slider" id="hidden-count-step-slider" rz-slider-model="vm.hiddenLayerCountSlider.value"
-          rz-slider-options="vm.hiddenLayerCountSlider.options"></rzslider>
-      </div>
-      <div class="col-sm-4">
+        <rzslider class="custom-slider mt-4" id="hidden-count-step-slider"
+          rz-slider-model="vm.hiddenLayerCountSlider.value" rz-slider-options="vm.hiddenLayerCountSlider.options">
+        </rzslider>
         <p class="settings-title">Hidden Layer Height</p>
-        <rzslider class="custom-slider" id="hidden-height-step-slider"
+        <rzslider class="custom-slider mt-4" id="hidden-height-step-slider"
           rz-slider-model="vm.hiddenLayersHeightSlider.value" rz-slider-options="vm.hiddenLayersHeightSlider.options">
         </rzslider>
         <p class="settings-title">Output Layer Height</p>
-        <rzslider class="custom-slider" id="output-height-step-slider"
+        <rzslider class="custom-slider mt-4" id="output-height-step-slider"
           rz-slider-model="vm.outputLayerHeightSlider.value" rz-slider-options="vm.outputLayerHeightSlider.options">
         </rzslider>
-      </div>
-      <div class="col-sm-4">
+        <hr>
+        <h5 for="predictionTextarea" class="text-uppercase">Sentence</h5>
         <textarea class="form-control" ng-model="resultTextarea"></textarea>
+        <hr>
+        <div class="d-flex justify-content-center align-items-center">
+          <!--<i ng-click="reset()" class="far fa-dot-circle fa-2x mr-2"></i>-->
+          <i ng-click="play()" ng-show="PlayIsVisible" class="far fa-play-circle fa-4x"></i>
+          <div ng-show="SpinnerIsVisible" ng-style="SpinnerIsActive" class="spinner spinner-4"></div>
+          <!--<i ng-click="stop()" class="far fa-stop-circle fa-2x ml-2"></i>-->
+        </div>
+      </div>
+      <div class="col-9">
+        <div id="neuralNet"></div>
       </div>
     </div>
   </div>

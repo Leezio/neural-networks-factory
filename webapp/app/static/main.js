@@ -45,7 +45,7 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
         "nodes": []
     };
 
-    var width = $window.innerWidth - 15;
+    var width = $window.innerWidth - 400;
     var height = 400,
         nodeSize = 15;
 
