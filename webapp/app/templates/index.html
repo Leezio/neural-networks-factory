@@ -33,7 +33,7 @@
   </div>
   <div class="container-fluid pt-2">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 bg-light">
         <h5 for="categorySelection" class="text-uppercase">Category</h5>
         <select class="custom-select">
           <option selected>Open this select menu</option>
@@ -70,8 +70,22 @@
           <!--<i ng-click="stop()" class="far fa-stop-circle fa-2x ml-2"></i>-->
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-9 pl-5">
+        <h5 class="text-uppercase">Vizualisation</h5>
         <div id="neuralNet"></div>
+        <div class="row pt-4">
+          <div class="col-6">
+            <h5 class="text-uppercase">Output</h5>
+            <p class="settings-title">Accuracy : </p>
+            <p class="settings-title">Score : </p>
+            <!--<textarea class="form-control" ng-model="resultTextarea"></textarea>-->
+          </div>
+          <div class="col-6">
+              <h5 class="text-uppercase">Result</h5>
+              <i class="text-success far fa-smile-beam fa-4x pl-2"></i>
+              <i class="text-danger far fa-frown fa-4x pl-2"></i>
+          </div>
+        </div>
       </div>
     </div>
   </div>
