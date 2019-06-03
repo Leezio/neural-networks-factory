@@ -1,5 +1,5 @@
 /** Neural Network **/
-.link { stroke: #999; stroke-opacity: .6; stroke-dasharray: 10; stroke-dashoffset: 100; animation: dash 2s linear infinite; }
+.link { stroke: #999; stroke-opacity: .6; /** stroke-dasharray: 10; **/ /** stroke-dashoffset: 100; **/ /** animation: dash 2s linear infinite; **/ }
 
 @keyframes dash { 0% { stroke-dashoffset: 100; }
   100% { stroke-dashoffset: 0; } }
@@ -23,6 +23,13 @@
 .custom-slider.rzslider .rz-tick.rz-selected { background: #999; }
 
 .settings-title { color: #626e78; }
+
+/** Settings **/
+body { margin-left: 60px; }
+
+.settings { z-index: 999; display: block; position: fixed; width: 500px; height: 100vh; top: 0px; left: -440px; transition: ease-in-out .3s left; }
+
+.settings:hover { left: 0px; }
 
 /** Spinner **/
 .spinner { width: 64px; height: 64px; background: #eee; border-radius: 50%; position: relative; display: inline-block; }

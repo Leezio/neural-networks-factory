@@ -14,8 +14,6 @@ def index(request):
 def neuralNetwork(request, sentence):
     imdb = keras.datasets.imdb
 
-    sentence = "I hate this movie"
-
     word_index = imdb.get_word_index()
 
     test=[]
@@ -26,15 +24,15 @@ def neuralNetwork(request, sentence):
 
     test = keras.preprocessing.sequence.pad_sequences([test], maxlen=256)
 
-    model = keras.models.load_model('my_model.h5')
+    model = keras.models.load_model('app/my_model.h5')
 
     model.summary()
     
     prediction = model.predict_classes(test, verbose=1)
 
     if (prediction[0][0] == 1):
-        prediction = "Positive"
+        prediction = True
     else:
-        prediction = "Negative"
+        prediction = False
 
     return JsonResponse({'TensorFlow': str(tf.__version__),"Sentence": sentence, "Result": {"Prediction": prediction}})

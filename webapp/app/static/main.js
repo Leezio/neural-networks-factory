@@ -5,18 +5,28 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
 
     $scope.PlayIsVisible = true;
     $scope.SpinnerIsVisible = false;
+    $scope.prediction = undefined;
 
     $scope.play = function () {
         $scope.PlayIsVisible = false;
         $scope.SpinnerIsVisible = true;
+        if ($scope.predictionTextarea == undefined || $scope.predictionTextarea == null) {
+            console.log("No sentence available");
+            $scope.PlayIsVisible = true;
+            $scope.SpinnerIsVisible = false;
+            return;
+        }
         $http.get("http://localhost:8000/predict/" + $scope.predictionTextarea)
             .then(function (response) {
                 console.log(response);
-                console.log("Play: " + vm.inputLayerHeight, vm.hiddenLayersCount, vm.hiddenLayersHeight, vm.outputLayerHeight);
                 $scope.PlayIsVisible = true;
                 $scope.SpinnerIsVisible = false;
-                $scope.resultTextarea = response.data.Result.Prediction;
+                /** $scope.resultAccuracy = response.data.Result.Accuracy; **/
+                /** $scope.resultScore = response.data.Result.Score; **/
+                $scope.resultAccuracy = $scope.resultScore = "This value ​​can not be obtained on pre-trained models !";
+                $scope.prediction = response.data.Result.Prediction;
             }).catch(function (data) {
+                console.log(data);
                 $scope.PlayIsVisible = false;
                 $scope.SpinnerIsVisible = true;
             });
@@ -45,7 +55,7 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
         "nodes": []
     };
 
-    var width = $window.innerWidth - 400;
+    var width = $window.innerWidth - 15;
     var height = 400,
         nodeSize = 15;
 
