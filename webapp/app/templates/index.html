@@ -11,7 +11,7 @@
   <!-- Styles -->
   <!-- Bootstrap 4 -->
   <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
   <!-- Font Awesome-->
   <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
   <!-- AngularJS slider -->
@@ -28,15 +28,16 @@
     <a class="navbar-brand" href="#"><strong>Neural Network Factory</strong></a>
   </nav>
   <div class="settings bg-light pt-4 pl-4 pr-4">
-    <h5 for="categorySelection" class="text-uppercase">Category</h5>
-    <select class="custom-select">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+    <h5 class="text-uppercase">Category</h5>
+    <h6 class="text-uppercase">Pre-Trained dataset</h6>
+    <select class="custom-select" ng-model="preTrainedDataset" required
+      ng-options='option.value as option.name for option in optionsPreTrainedDataset'></select>
+    <h5 class="text-uppercase text-center mt-3">Or</h5>
+    <h6 class="text-uppercase">Raw dataset</h6>
+    <select class="custom-select" ng-model="defaultDataset" required
+      ng-options='option.value as option.name for option in optionsDefaultDataset'></select>
     <hr>
-    <h5 class="text-uppercase">Settings</h5>
+    <h5 class="text-uppercase">Settings <small class="text-muted">Only with raw dataset</small></h5>
     <p class="settings-title">Input Layer Height</p>
     <rzslider class="custom-slider mt-4" id="input-height-step-slider" rz-slider-model="vm.inputLayerHeightSlider.value"
       rz-slider-options="vm.inputLayerHeightSlider.options">
@@ -102,7 +103,7 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <!-- Bootstrap 4 -->
   <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- Dashboard local script -->
   <script type="text/javascript" src="{% static "./main.js" %}"></script>
   <!-- End Scripts -->

@@ -7,23 +7,56 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     $scope.SpinnerIsVisible = false;
     $scope.prediction = undefined;
 
+    $scope.optionsDefaultDataset = [
+        { name: 'Select default dataset', value: false },
+        { name: 'IMDb default', value: 'imdb_default' }
+    ];
+
+    $scope.defaultDataset = $scope.optionsDefaultDataset[0].value;
+
+    $scope.optionsPreTrainedDataset = [
+        { name: 'Select pre-trained dataset', value: false },
+        { name: 'IMDb trained with 3 layers of 16 nodes', value: 'imdb_pre_trained' },
+        { name: 'Amazon books trained with 3 layers of 16 nodes', value: 'amazon_books_pre_trained' },
+        { name: 'Amazon movies trained with 3 layers of 16 nodes', value: 'amazon_movies_pre_trained' },
+        { name: 'Amazon games trained with 3 layers of 16 nodes', value: 'amazon_games_pre_trained' }
+    ];
+
+    $scope.preTrainedDataset = $scope.optionsPreTrainedDataset[0].value;
+
     $scope.play = function () {
         $scope.PlayIsVisible = false;
         $scope.SpinnerIsVisible = true;
-        if ($scope.predictionTextarea == undefined || $scope.predictionTextarea == null) {
+        if ($scope.predictionTextarea == undefined || $scope.predictionTextarea == null || $scope.predictionTextarea.length < 1) {
             console.log("No sentence available");
+            $scope.predictionTextarea == undefined
             $scope.PlayIsVisible = true;
             $scope.SpinnerIsVisible = false;
             return;
         }
-        $http.get("http://localhost:8000/predict/" + $scope.predictionTextarea)
+
+        var dataset = "imdb";
+        var isPreTrained = 1;
+
+        if ($scope.defaultDataset != false) {
+            dataset = $scope.defaultDataset;
+            isPreTrained = 0;
+        } else if ($scope.preTrainedDataset != false) {
+            dataset = $scope.preTrainedDataset;
+            isPreTrained = 1;
+        }
+
+        $http.get("http://localhost:8000/predict/" + dataset + "/" + isPreTrained + "/" + vm.hiddenLayersCount + "/" + vm.hiddenLayersHeight + "/" + $scope.predictionTextarea)
             .then(function (response) {
                 console.log(response);
                 $scope.PlayIsVisible = true;
                 $scope.SpinnerIsVisible = false;
-                /** $scope.resultAccuracy = response.data.Result.Accuracy; **/
-                /** $scope.resultScore = response.data.Result.Score; **/
-                $scope.resultAccuracy = $scope.resultScore = "This value ​​can not be obtained on pre-trained models !";
+                if (isPreTrained) {
+                    $scope.resultAccuracy = $scope.resultScore = "This value ​​can not be obtained on pre-trained models !";
+                } else {
+                    $scope.resultAccuracy = response.data.Result.Accuracy;
+                    $scope.resultScore = response.data.Result.Score;
+                }
                 $scope.prediction = response.data.Result.Prediction;
             }).catch(function (data) {
                 console.log(data);
@@ -46,7 +79,7 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
             });
     };
 
-    vm.inputLayerHeight = 15;
+    vm.inputLayerHeight = 16;
     vm.hiddenLayersCount = 2;
     vm.hiddenLayersHeight = 15;
     vm.outputLayerHeight = 1;
@@ -67,11 +100,12 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
     });
 
     vm.inputLayerHeightSlider = {
-        value: 15,
+        value: 16,
         options: {
             floor: 5,
             ceil: 20,
             showTicks: true,
+            disabled: true,
             id: 'input-height-step-slider',
             onChange: function (id) {
                 vm.inputLayerHeight = vm.inputLayerHeightSlider.value;
@@ -114,6 +148,7 @@ app.controller('MainCtrl', function ($scope, $http, $window, $q) {
             floor: 1,
             ceil: 10,
             showTicks: true,
+            disabled: true,
             id: 'output-height-step-slider',
             onChange: function (id) {
                 vm.outputLayerHeight = vm.outputLayerHeightSlider.value;
